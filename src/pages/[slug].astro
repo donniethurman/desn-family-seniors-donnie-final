@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StudentPage from "../components/StudentPage.astro";
+import data from "../data/data.json";
+
+export function getStaticPaths() {
+  return data.students.map((student) => ({
+    params: { slug: student.name.toLowerCase().replace(/\s+/g, "-") },
+    props: { student },
+  }));
+}
+
+const { student } = Astro.props;
+
+const photoImports = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/senior-photo/*.jpg"
+);
+
+const filename = student.image.split("/").pop();
+const key = `../assets/senior-photo/${filename}`;
+const resolvedImage = key in photoImports
+  ? (await photoImports[key]()).default
+  : student.image;
+---
+
+<BaseLayout title={student.name}>
+  <StudentPage {...student} image={resolvedImage} />
+</BaseLayout>

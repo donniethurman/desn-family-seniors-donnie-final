@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import StudentCard from "../components/StudentCard.astro";
+import data from "../data/data.json";
+
+const { students } = data;
+const title = 'DESN FMLY Seniors';
+
+const photoImports = import.meta.glob<{ default: ImageMetadata }>(
+  "../assets/senior-photo/*.jpg"
+);
+
+async function resolveImage(imagePath: string) {
+  const filename = imagePath.split("/").pop();
+  const key = `../assets/senior-photo/${filename}`;
+  return key in photoImports ? (await photoImports[key]()).default : imagePath;
+}
+
+const studentsWithImages = await Promise.all(
+  students.map(async (student) => ({
+    ...student,
+    image: await resolveImage(student.image),
+  }))
+);
+---
+
+<BaseLayout title={title}>
+  
+  <h1> {title} </h1>
+  
+  <main>
+
+    {studentsWithImages.map((student) => (
+      <StudentCard {...student} />
+    ))}
+  
+</main>
+
+</BaseLayout>
+

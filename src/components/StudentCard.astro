@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+const { name, image, favorite_emoji, bio, song, quote, yourURL } = Astro.props;
+const slug = name.toLowerCase().replace(/\s+/g, "-");
+---
+
+<a href={`/${slug}`} class="card-link">
+  <figure class="card">
+    <figcaption class="card-name" transition:name={`name-${slug}`}>{name}</figcaption>
+    <Image src={image} alt={name} widths={[400, 800]} sizes="(max-width: 600px) 100vw, 400px" inferSize={typeof image === "string"} transition:name={`photo-${slug}`} />
+  </figure>
+</a>
+
+<style>
+  .card {
+    border: 0;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border: 1px solid lightgray;
+  }
+
+  .card :global(img) {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .card-name {
+    }
+
+  .card-emoji {
+  
+  }
+
+  .card-links {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: auto;
+  }
+
+  .card-links a {
+    text-decoration: none;
+    color: goldenrod;
+    border-bottom: 1px solid currentColor;
+  }
+
+  .card-links a:hover {
+    background: gray;
+    color: white;
+  }
+
+  .card-link {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    aspect-ratio: 1 / 1;
+  }
+
+  .card {
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .card-link:hover .card {
+    border-color: goldenrod;
+  }
+</style>

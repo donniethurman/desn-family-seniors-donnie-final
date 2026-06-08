@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+const { name, image, favorite_emoji, bio, song, quote, yourURL } = Astro.props;
+const slug = name.toLowerCase().replace(/\s+/g, "-");
+---
+
+<nav>
+  <a href="./">Back</a>
+</nav>
+
+<Image src={image} alt={name} widths={[600, 1200]} sizes="(max-width: 800px) 100vw, 600px" inferSize={typeof image === "string"} transition:name={`photo-${slug}`} />
+
+<h1 transition:name={`name-${slug}`}><span>{favorite_emoji}</span> {name}</h1>
+<p>{bio}</p>
+{favorite_emoji && <p>{favorite_emoji}</p> }
+{quote && <blockquote>{quote}</blockquote>}
+{song && <p><a href={song} target="_blank" rel="noopener">Favorite Song</a></p>}
+{yourURL && <p><a href={yourURL} target="_blank" rel="noopener">My URL</a></p>}
+
+<style>
+  img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+  }
+</style>
