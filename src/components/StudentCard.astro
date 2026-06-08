@@ -2,11 +2,28 @@
 import { Image } from "astro:assets";
 const { name, image, favorite_emoji, bio, song, quote, yourURL } = Astro.props;
 const slug = name.toLowerCase().replace(/\s+/g, "-");
+const songUrl = song ? (song.startsWith('http') ? song : `https://${song}`) : null;
 ---
 
 <a href={`/${slug}`} class="card-link">
   <figure class="card">
-    <figcaption class="card-name" transition:name={`name-${slug}`}>{name}</figcaption>
+    <figcaption class="card-name" transition:name={`name-${slug}`}>
+      <div class="card-header">
+        <span class="name">{name}</span>
+        {favorite_emoji && <span class="card-emoji">{favorite_emoji}</span>}
+      </div>
+
+      {song && (
+        <div class="card-links">
+          <button type="button" class="song-button" onclick={`window.open(${JSON.stringify(songUrl)}, '_blank')`}>
+            Song
+          </button>
+        </div>
+      )}
+
+      {quote && <p class="card-quote">{quote}</p>}
+    </figcaption>
+
     <Image src={image} alt={name} widths={[400, 800]} sizes="(max-width: 600px) 100vw, 400px" inferSize={typeof image === "string"} transition:name={`photo-${slug}`} />
   </figure>
 </a>
