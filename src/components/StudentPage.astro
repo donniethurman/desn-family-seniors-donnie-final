@@ -4,24 +4,75 @@ const { name, image, favorite_emoji, bio, song, quote, yourURL } = Astro.props;
 const slug = name.toLowerCase().replace(/\s+/g, "-");
 ---
 
-<nav>
-  <a href="./">Back</a>
-</nav>
+<article class="student-page">
+  <nav>
+    <a href="./">Back</a>
+  </nav>
 
-<Image src={image} alt={name} widths={[600, 1200]} sizes="(max-width: 800px) 100vw, 600px" inferSize={typeof image === "string"} transition:name={`photo-${slug}`} />
+  <Image src={image} alt={name} widths={[600, 1200]} sizes="(max-width: 800px) 100vw, 600px" inferSize={typeof image === "string"} transition:name={`photo-${slug}`} />
 
-<h1 transition:name={`name-${slug}`}><span>{favorite_emoji}</span> {name}</h1>
-<p>{bio}</p>
-{favorite_emoji && <p>{favorite_emoji}</p> }
-{quote && <blockquote>{quote}</blockquote>}
-{song && <p><a href={song} target="_blank" rel="noopener">Favorite Song</a></p>}
-{yourURL && <p><a href={yourURL} target="_blank" rel="noopener">My URL</a></p>}
+  <h1 transition:name={`name-${slug}`}><span>{favorite_emoji}</span> {name}</h1>
+  <p>{bio}</p>
+  {favorite_emoji && <p>{favorite_emoji}</p> }
+  {quote && <blockquote>{quote}</blockquote>}
+  {song && <p><a href={song} target="_blank" rel="noopener">Favorite Song</a></p>}
+  {yourURL && <p><a href={yourURL} target="_blank" rel="noopener">My URL</a></p>}
+</article>
 
 <style>
-  img {
+  .student-page {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    color: #111;
+    padding: 2rem;
+  }
+
+  .student-page img {
     width: 300px;
     height: 300px;
     object-fit: cover;
     display: block;
+  }
+
+  .student-page h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-family: Ratio, sans-serif;
+    color: #544B44;
+  }
+
+  .student-page p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #333;
+    max-width: 600px;
+    margin: 0 auto 1rem;
+    padding: 0 1rem;
+  }
+
+  .student-page blockquote {
+    font-style: italic;
+    color: #000;
+    border-left: 2px solid goldenrod;
+    padding-left: .2rem;
+    margin: 1rem auto;
+    max-width: 600px;
+  }
+
+  .student-page a {
+    color: goldenrod;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .student-page a:hover {
+    text-decoration: underline;
   }
 </style>

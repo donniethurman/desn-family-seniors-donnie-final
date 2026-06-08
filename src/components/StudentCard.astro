@@ -36,6 +36,10 @@ const songUrl = song ? (song.startsWith('http') ? song : `https://${song}`) : nu
     flex-direction: column;
     gap: 0.5rem;
     border: 1px solid lightgray;
+    background-color: #FFF4EB;
+    border-radius: 1rem;
+    flex: 1;
+    overflow: hidden;
   }
 
   .card :global(img) {
@@ -43,21 +47,68 @@ const songUrl = song ? (song.startsWith('http') ? song : `https://${song}`) : nu
     aspect-ratio: 1 / 1;
     object-fit: cover;
     display: block;
+    border-radius: 1rem;
   }
 
+  .card:hover {
+    background: #a6bcc9;
+    transition: background-color 0.3s;
+  }
   .card-name {
+    font-size: 1.25rem;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: 0.5rem;
     }
 
   .card-emoji {
   
   }
 
+  .card-quote {
+    font-style: italic;
+    color: black;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 0.9rem;
+    font-weight: normal;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
   .card-links {
     display: flex;
     gap: 0.75rem;
     margin-top: auto;
   }
 
+  .song-button {
+    appearance: none;
+    -webkit-appearance: none;
+    background: #3B4B8E;
+    color: #fff4eb;
+    border: 1px solid goldenrod;
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+    font: inherit;
+    font-size: 0.9rem;
+    border-radius: 2rem;
+    margin: 0 auto;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  }
+
+  .song-button:hover {
+    background: goldenrod;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+  }
   .card-links a {
     text-decoration: none;
     color: goldenrod;

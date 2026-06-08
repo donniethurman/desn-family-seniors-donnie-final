@@ -25,121 +25,27 @@ const studentsWithImages = await Promise.all(
 ---
 
 <BaseLayout title={title}>
-  
   <h1> {title} </h1>
-  
   <main>
-
     {studentsWithImages.map((student) => (
       <StudentCard {...student} />
     ))}
-  
-</main>
-
+  </main>
 </BaseLayout>
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="https://use.typekit.net/ibe3may.css">
-    <link rel="stylesheet" href="https://use.typekit.net/ibe3may.css">
-    <title> {title} </title>
-    <style>
-      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 1; }
-
-      body {
-        font-family: Helvetica, sans-serif;
-        font-size: 14px;
-        background: #EEE0CB;
-        color: #111;
-        padding: 2rem;
-      }
-
-      h1 {
-        font-size: 5rem;
-        font-weight: 600;
-        margin-bottom: 1rem;
-        margin-top: 1rem;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-        margin: 0 auto 2rem;
-        text-align: center;
-        font-family: Ratio, sans-serif;
-        color: #544B44;
-      }
-
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(4, 20rem);
-        gap: 1rem;
-        border: 1px solid #e0e0e0;
-        width: fit-content;
-        margin-inline: auto;
-        justify-content: center;
-        text-align: center;
-      }
-
-      .card {
-        padding: 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin: 1rem;
-        background-color: #544B44;
-        border-radius: 2rem;
-        width: 20rem;
-      }
-
-      .card img {
-        width: 100%;
-        aspect-ratio: 5 / ;
-        object-fit: cover;
-        display: block;
-        background: #f0f0f0;
-      }
-
-      img {
-        border-radius: 2rem;
-      }
-
-      .card-name {
-        font-family: Ratio, sans-serif;
-        font-weight: 900;
-        font-size: .9rem;
-        color: #EEE0CB;
-        text-align: center;
-      }
-
-      .card-emoji {
-        font-size: 1.1rem;
-      }
-
-      .card-links {
-        display: row;
-        gap: 2rem;
-        margin-top: auto;
-        text-align: center;
-      }
-
-      .card-links a {
-        font-size: 1rem;
-        gap: 1rem;
-        color: #BFD7EA;
-        text-decoration: none;
-        border-bottom: 1px solid currentColor;
-        line-height: 2;
-      }
-
-      .card-links a:hover {
-        color: #839788;
-      }
-    </style>
-  </head>
-  </body>
-</html>
+<style>
+  h1 {
+    font-size: 5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin: 0 auto 2rem;
+    text-align: center;
+    font-family: Ratio, sans-serif;
+    color: #FFF4EB;
+  }
+</style>
 
 
